@@ -3,8 +3,8 @@
 	class Conexao {
 		private $host = 'localhost';
 		private $db_name = 'bdvendas';
-		private $usuarios = 'root';
-		private $senha = '';
+		private $usuarios = 'usuario';
+		private $senha = 'senha';
 		
 		function conectar(){
 			try {
