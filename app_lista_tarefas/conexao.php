@@ -2,17 +2,17 @@
 
 	class Conexao {
 		private $host = 'localhost';
-		private $db_name = 'bdvendas';
-		private $usuarios = 'usuario';
-		private $senha = 'senha';
+		private $dbname = 'tarefas';
+		private $usuario = 'admin';
+		private $senha = 'password';
 		
-		function conectar(){
+		public function conectar(){
 			try {
-				$conexao = new PDO("
-				mysql:host=$this->$host;dbname=$this->dbname",
-				"$this->usuario",
-				"$this->senha
-			");
+				$conexao = new PDO(
+					"mysql:host=$this->host;dbname=$this->dbname",
+					"$this->usuario",
+					"$this->senha"
+				);
 			
 			return $conexao;
 			
