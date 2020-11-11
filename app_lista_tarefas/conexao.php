@@ -3,8 +3,8 @@
 	class Conexao {
 		private $host = 'localhost';
 		private $dbname = 'tarefas';
-		private $usuario = 'admin';
-		private $senha = 'password';
+		private $usuario = 'root';
+		private $senha = '';
 		
 		public function conectar(){
 			try {
