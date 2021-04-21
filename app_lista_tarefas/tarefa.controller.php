@@ -19,6 +19,10 @@
 		/*Nos arquivo publico podemos dentro de app_lista_tarefas/nova_tarefa.php
 		  existe uma logica onde verificaomos de o parametro passado via get é inclusao e se inclusao é igual a 1*/
 	} else if($acao == 'recuperar') {
-		echo 'Chegamos até aqui graças ao nosso Deus!';
+		$tarefa = new Tarefa();
+		$conexao = new Conexao();
+		
+		$tarefaService = new TarefaService($conexao, $tarefa);
+		$tarefa = $tarefaService->recuperar();
 	}
  

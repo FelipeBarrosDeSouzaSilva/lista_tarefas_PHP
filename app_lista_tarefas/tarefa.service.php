@@ -17,7 +17,10 @@
 			$stmt->execute();
 		}
 		public function recuperar() {
-			
+			$query = 'select * from tb_tarefas';
+			$stmt = $this->conexao->prepare($query);
+			$stmt->execute();
+			return $tarefa = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
 		public function atualizar() {
 			
