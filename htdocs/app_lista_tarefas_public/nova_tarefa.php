@@ -27,12 +27,8 @@
 
 		<div class="container app">
 			<div class="row">
-				<div class="col-md-3 menu">
-					<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
-						<li class="list-group-item active"><a href="#">Nova tarefa</a></li>
-						<li class="list-group-item"><a href="todas_tarefas.php">Todas tarefas</a></li>
-					</ul>
+				<div class="col-md-3 menu" id="todas_tarefas">
+					
 				</div>
 
 				<div class="col-md-9">
@@ -57,4 +53,8 @@
 			</div>
 		</div>
 	</body>
+	<script src="javascript/menu.js"></script>
+	<script>
+		menu('nova_tarefa');
+	</script>
 </html>

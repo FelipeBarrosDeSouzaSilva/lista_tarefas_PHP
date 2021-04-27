@@ -1,11 +1,11 @@
 <?php
 	$acao = 'recuperar';
 	require 'tarefa.controller.php';
-	echo '<pre>';
+	/*echo '<pre>';
 	foreach($tarefa as $key => $value){
 		echo $value['tarefa'];
 	}
-	echo '</pre>';
+	echo '</pre>';*/
 ?>
 <html>
 	<head>
@@ -16,6 +16,48 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<script>
+		
+			function editar(id, valor){
+				let form = document.createElement('form');
+				form.action = '#';
+				form.method = 'post';
+				form.className = 'row';
+				
+				let inputTarefa = document.createElement('input');
+				inputTarefa.type = 'text';
+				inputTarefa.name = 'tarefa';
+				inputTarefa.className = 'form-control';
+				inputTarefa.className = 'col-9 form-control';
+				inputTarefa.value = valor;
+				
+				let inputId = document.createElement('input');
+				inputId.type = 'hidden';
+				inputId.name = 'id';
+				inputId.value = id;
+				
+				let button = document.createElement('button');
+				button.type = 'submit';
+				button.className = 'col-3 btn btn-info';
+				button.innerHTML = 'Atualizar';
+				
+				form.appendChild(inputTarefa);
+				
+				form.appendChild(inputId);
+				
+				form.appendChild(button);
+				
+				let tarefa = document.getElementById('tarefa_' + id);
+				
+				//limpar texto para atribuir novo html
+				
+				tarefa.innerHTML = '';
+				
+				//incluir html programado
+				
+				tarefa.insertBefore(form, tarefa[0]);
+			}	
+		</script>
 	</head>
 
 	<body>
@@ -30,12 +72,8 @@
 
 		<div class="container app">
 			<div class="row">
-				<div class="col-sm-3 menu">
-					<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
-						<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-						<li class="list-group-item active"><a href="#">Todas tarefas</a></li>
-					</ul>
+				<div class="col-sm-3 menu" id="todas_tarefas">
+					
 				</div>
 
 				<div class="col-sm-9">
@@ -48,12 +86,12 @@
 <?php foreach($tarefa as $indice => $value){ ?>
 								
 	<div class="row mb-3 d-flex align-items-center tarefa">
-		<div class="col-sm-9">
-			<?php echo $value['tarefa']?><?php $value['id_status']?>
+		<div class="col-sm-9" id="tarefa_<?= $value['id']?>";>
+			<?php echo $value['tarefa']?> (<?php echo $value['status']?>)
 		</div>
 		<div class="col-sm-3 mt-2 d-flex justify-content-between">
 			<i class="fas fa-trash-alt fa-lg text-danger"></i>
-			<i class="fas fa-edit fa-lg text-info"></i>
+			<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $value['id']?>, '<?= $value['tarefa']?>')"></i>
 			<i class="fas fa-check fa-lg text-success"></i>
 		</div>
 	</div>
@@ -67,4 +105,8 @@
 			</div>
 		</div>
 	</body>
+	<script src="javascript/menu.js"></script>
+	<script>
+		menu('todas_tarefas');
+	</script>
 </html>
