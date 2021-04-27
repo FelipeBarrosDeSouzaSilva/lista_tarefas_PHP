@@ -16,11 +16,16 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<style>
+			#atualizada {
+				transition: .7s;
+			}
+		</style>
 		<script>
 		
 			function editar(id, valor){
 				let form = document.createElement('form');
-				form.action = '#';
+				form.action = 'tarefa.controller.php?acao=atualizar';
 				form.method = 'post';
 				form.className = 'row';
 				
@@ -69,7 +74,17 @@
 				</a>
 			</div>
 		</nav>
-
+		<?php if(isset($_GET['atualizado'])){?>
+				<div id="atualizada" class="bg-success pt-2 text-white d-flex justify-content-center"><h5>Tarefa Atualizada!</h5></div>
+		<?php }?>
+		<script>
+			var atualizada = document.getElementById('atualizada');
+			setTimeout(()=>{
+				atualizada.style = 'display: none;';
+				atualizada.classList.remove('bg-success');
+			},3500);
+			
+		</script>
 		<div class="container app">
 			<div class="row">
 				<div class="col-sm-3 menu" id="todas_tarefas">
@@ -98,9 +113,9 @@
 								
 <?php }?>								
 								
-							</div>
-						</div>
-					</div>
+							</div> <!-- /col -->
+						</div> <!-- /row -->
+					</div> <!-- /container pagina -->
 				</div>
 			</div>
 		</div>
