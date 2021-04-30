@@ -1,3 +1,8 @@
+<?php
+	$acao = 'recuperar';
+	require 'tarefa.controller.php';
+?>
+
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -30,24 +35,22 @@
 							<div class="col">
 								<h4>Tarefas pendentes</h4>
 								<hr />
-
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Lavar o carro</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										<i class="fas fa-edit fa-lg text-info"></i>
-										<i class="fas fa-check-square fa-lg text-success"></i>
+								<?php foreach($tarefa as $indice => $value){?>
+								<?php if($value['status'] == 'pendente'){?>
+									<div class="row mb-3 d-flex align-items-center tarefa">
+										<div class="col-sm-9" id="tarefa_<?= $value['id']?>";>
+											<?php echo $value['tarefa']?> (<?php echo $value['status']?>)
+										</div>
+										<div class="col-sm-3 mt-2 d-flex justify-content-between">
+											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $value['id'] ?>)"></i>
+											<?php if($value['status'] == 'pendente'){?>
+													<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $value['id']?>, '<?= $value['tarefa']?>')"></i>
+													<i class="fas fa-check fa-lg text-success" onclick="marcarRealizada(<?= $value['id']?>)"></i>
+												<?php }?>
+										</div>
 									</div>
-								</div>
-
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Passear com o cachorro</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										<i class="fas fa-edit fa-lg text-info"></i>
-										<i class="fas fa-check-square fa-lg text-success"></i>
-									</div>
-								</div>
+								<?php }?>
+								<?php } ?>
 							</div>
 						</div>
 					</div>
@@ -56,6 +59,7 @@
 		</div>
 	</body>
 	<script src="javascript/menu.js"></script>
+	<script src="javascript/editar.js"></script>
 	<script>
 		menu('index');
 	</script>
