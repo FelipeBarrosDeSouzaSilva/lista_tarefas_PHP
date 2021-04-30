@@ -62,6 +62,13 @@
 				
 				tarefa.insertBefore(form, tarefa[0]);
 			}	
+			function remover(id){
+				location.href  = 'todas_tarefas.php?acao=remover&id=' + id;
+			}
+			function marcarRealizada(id){
+				location.href  = 'todas_tarefas.php?acao=marcarRealizada&id=' + id;
+			}
+			
 		</script>
 	</head>
 
@@ -77,6 +84,13 @@
 		<?php if(isset($_GET['atualizado'])){?>
 				<div id="atualizada" class="bg-success pt-2 text-white d-flex justify-content-center"><h5>Tarefa Atualizada!</h5></div>
 		<?php }?>
+		<?php if(isset($_GET['remover'])){?>
+				<div id="atualizada" class="bg-success pt-2 text-white d-flex justify-content-center"><h5>Tarefa Deletada!</h5></div>
+		<?php }?>
+		<?php if(isset($_GET['realizada'])){?>
+				<div id="atualizada" class="bg-success pt-2 text-white d-flex justify-content-center"><h5>Tarefa atualizada!</h5></div>
+		<?php }?>
+		
 		<script>
 			var atualizada = document.getElementById('atualizada');
 			setTimeout(()=>{
@@ -105,9 +119,9 @@
 			<?php echo $value['tarefa']?> (<?php echo $value['status']?>)
 		</div>
 		<div class="col-sm-3 mt-2 d-flex justify-content-between">
-			<i class="fas fa-trash-alt fa-lg text-danger"></i>
+			<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $value['id'] ?>)"></i>
 			<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $value['id']?>, '<?= $value['tarefa']?>')"></i>
-			<i class="fas fa-check fa-lg text-success"></i>
+			<i class="fas fa-check fa-lg text-success" onclick="marcarRealizada(<?= $value['id']?>)"></i>
 		</div>
 	</div>
 								
