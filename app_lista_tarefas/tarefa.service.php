@@ -47,5 +47,26 @@
 			$stmt->bindValue(2, $this->tarefa->__get('id'));
 			return $stmt->execute();
 		}
+		public function logar(){
+			$query = "select id from cadastro where email = ? and senha = ?";
+			
+			$stmt = $this->conexao->prepare($query);
+			$stmt->bindValue(1, $this->tarefa->__get('email'));
+			$stmt->bindValue(2, $this->tarefa->__get('senha'));
+			$stmt->execute();
+			
+			if($stmt->rowCount() > 0){
+				session_start();
+				
+				$retorno = $stmt->fetch();
+				
+				$_SESSION['id_user'] = $retorno['id'];
+				header('location: index.php?sucessoMeuBom');
+				//return $_SESSION['id_user'];*/
+				var_dump($_POST);
+			}else {
+				header('location: index.php?erro');
+			}
+		}
 		
 	}

@@ -1,10 +1,3 @@
-<?php
-	session_start();
-	if(!isset($_SESSION['id_user'])){
-		header('location: logar.php?semSecao');
-		exit();
-	}
-?>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -17,6 +10,10 @@
 		<style>
 			#atualizada {
 				transition: .7s;
+			}
+			label {
+				color: green;
+				font-weight: 500;
 			}
 		</style>
 	</head>
@@ -44,7 +41,7 @@
 			},3500);
 			
 		</script>
-
+		
 		<div class="container app">
 			<div class="row">
 				<div class="col-md-3 menu" id="todas_tarefas">
@@ -55,14 +52,45 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Nova tarefa</h4>
+								<h4>Cadastro</h4>
 								<hr />
 
-								<form method="post" action="tarefa.controller.php?acao=inserir">
+								<form method="post" action="tarefa.controller.php?acao=cadastrar_usuario">
 									<div class="form-group">
-										<label>Descrição da tarefa:</label>
-										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="tarefa">
+										<label>Nome:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="nome">
 									</div>
+
+									<div class="form-group">
+										<label>Telefone:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="telefone">
+									</div>
+
+<div class="form-group">
+										<label>Celular:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="celular">
+									</div>
+
+<div class="form-group">
+										<label>CEP:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="cep">
+									</div>
+
+<div class="form-group">
+										<label>CPF:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="cpf">
+									</div>
+
+<div class="form-group">
+										<label>E-mail:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="email">
+									</div>
+
+<div class="form-group">
+										<label>Senha:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="senha">
+									</div>
+
 
 									<button class="btn btn-success">Cadastrar</button>
 								</form>
@@ -75,6 +103,6 @@
 	</body>
 	<script src="javascript/menu.js"></script>
 	<script>
-		menu('nova_tarefa');
+		menu('cadastro');
 	</script>
 </html>

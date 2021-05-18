@@ -1,6 +1,12 @@
 <?php
 	$acao = 'recuperar';
 	require 'tarefa.controller.php';
+	
+	session_start();
+	if(!isset($_SESSION['id_user'])){
+		header('location: logar.php?semSecao');
+		exit();
+	}
 ?>
 
 <html>

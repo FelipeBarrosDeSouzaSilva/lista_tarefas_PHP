@@ -55,4 +55,16 @@
 		
 		$tarefaService->marcarRealizada();
 		header('Location: todas_tarefas.php?realizada');
+	}else if($acao == 'logar'){
+		$model = new Tarefa();
+		$model->__set('email', $_POST['email']);
+		$model->__set('senha', $_POST['senha']);
+		
+		$conexao = new Conexao();
+		
+		$service = new TarefaService($conexao, $model);
+		$service->logar();
 	}
+	
+	
+	

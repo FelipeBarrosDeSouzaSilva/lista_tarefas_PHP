@@ -1,10 +1,3 @@
-<?php
-	session_start();
-	if(!isset($_SESSION['id_user'])){
-		header('location: logar.php?semSecao');
-		exit();
-	}
-?>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -17,6 +10,10 @@
 		<style>
 			#atualizada {
 				transition: .7s;
+			}
+			label {
+				color: green;
+				font-weight: 500;
 			}
 		</style>
 	</head>
@@ -44,7 +41,7 @@
 			},3500);
 			
 		</script>
-
+		
 		<div class="container app">
 			<div class="row">
 				<div class="col-md-3 menu" id="todas_tarefas">
@@ -55,16 +52,24 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Nova tarefa</h4>
+								<h4>Login</h4>
 								<hr />
 
-								<form method="post" action="tarefa.controller.php?acao=inserir">
+								<form method="post" action="tarefa.controller.php?acao=logar">
+									
+
 									<div class="form-group">
-										<label>Descrição da tarefa:</label>
-										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro" name="tarefa">
+										<label>E-mail:</label>
+										<input type="text" class="form-control" placeholder="Exemplo: fabioLorenzoCeuVerde@gmail.com" name="email"> 
 									</div>
 
-									<button class="btn btn-success">Cadastrar</button>
+									<div class="form-group">
+										<label>Senha:</label>
+										<input type="password" class="form-control" placeholder="Use a sua senha Cadastrada para logar" name="senha">
+									</div>
+
+
+									<button class="btn btn-success">Logar</button>
 								</form>
 							</div>
 						</div>
@@ -75,6 +80,6 @@
 	</body>
 	<script src="javascript/menu.js"></script>
 	<script>
-		menu('nova_tarefa');
+		menu('logar');
 	</script>
 </html>

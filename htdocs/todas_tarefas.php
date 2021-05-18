@@ -1,11 +1,12 @@
 <?php
 	$acao = 'recuperar';
 	require 'tarefa.controller.php';
-	/*echo '<pre>';
-	foreach($tarefa as $key => $value){
-		echo $value['tarefa'];
+	
+	session_start();
+	if(!isset($_SESSION['id_user'])){
+		header('location: logar.php?semSecao');
+		exit();
 	}
-	echo '</pre>';*/
 ?>
 <html>
 	<head>
